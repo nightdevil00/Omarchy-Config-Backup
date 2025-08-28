@@ -17,7 +17,7 @@ PUSHTOGIT="$HOME/pushtogit.sh"
 
 mkdir -p "$DEST"
 
-# --- Progress Bar (integer-based, no bc required) ---
+# --- Progress Bar  ---
 progress_bar() {
     local duration=$1
     local total=20
@@ -53,7 +53,7 @@ backup() {
         done < <(find "$folder" -type f \( -name "*.conf" -o -name "*.list" -o -name "*.dirs" -o -name "*.locale" -o -name "*.ttf" -o -name "*.toml" \))
     done
 
-    # Backup loose files in .config
+    # Backup those loose files in .config
     while IFS= read -r file; do
         filename=$(basename "$file")
         newname="${filename}_${DATESTAMP}"
@@ -114,7 +114,7 @@ pushtogit() {
         bash "$PUSHTOGIT"
     else
         echo -e "${RED}Push-to-Git script not found at $PUSHTOGIT${RESET}"
-        echo -e "${YELLOW}Please save pushtogit.sh in your home folder.${RESET}"
+        echo -e "${YELLOW}Please save pushtogit.sh in your Home/MyBackup folder.${RESET}"
     fi
 }
 
